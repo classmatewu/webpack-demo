@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
     /**
@@ -21,7 +22,7 @@ module.exports = {
      * 打包出口
      */
     output : {
-        filename : '[name].[hash:8].js', // 
+        filename : '[name].[hash:8].js', // 避免因缓存问题，没访问到最新文件
         // filename : 'bundle.js',
         path : path.join(__dirname, '../dist')
     },
@@ -31,8 +32,9 @@ module.exports = {
      */
     plugins : [
         new HtmlWebpackPlugin({
-          template : path.resolve(__dirname, '../public/index.html'),
-          filename: 'index.html'
-        })
+          template : path.resolve(__dirname, '../public/index.html'), // 模版
+          filename: 'index.html' // 生成的文件名
+        }),
+        new CleanWebpackPlugin()
     ]
 }
