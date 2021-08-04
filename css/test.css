@@ -1,0 +1,7 @@
+.title {
+  background-color: aquamarine;
+}
+.b {
+  display: flex;
+  flex-direction: column;
+}

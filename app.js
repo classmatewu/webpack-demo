@@ -1,3 +1,5 @@
+import './css/test.css'
+import './css/test.scss'
 import {add} from './modular/esm'
 const {sub} = require('./modular/common')
 const mult = require('./modular/amd')
