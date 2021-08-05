@@ -64,6 +64,27 @@ module.exports = {
                         plugins:[require('autoprefixer')]
                     }
                 }, 'sass-loader']
+            },
+            {
+                /**
+                 * file-loader搭配url-loader打包图片
+                 * 小于 limit 的，则使用 url-loader 打包成base64，大于 limit 的则使用 file-loader 将文件移动到输出的目录中
+                 */
+                test: /\.(jpe?g|png|gif)$/i, //图片文件
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 1024 * 1024 * 10, // 10M
+                            fallback: {
+                                loader: 'file-loader',
+                                options: {
+                                    name: 'images/[name].[hash:8].[ext]'
+                                }
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
