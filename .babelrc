@@ -1,0 +1,5 @@
+{
+  // 也可以写成presets:['env']
+  presets: ['babel-preset-env'], // 按照esX规则进行代码编译
+  plugins: ['transform-runtime'], // 打补丁
+}

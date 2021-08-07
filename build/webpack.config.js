@@ -98,16 +98,19 @@ module.exports = {
                  *      babel-core：babel编译库的核心包
                  *      babel-loader：可以针对指定的文件进行babel改造，webpack中的loader对应某一类文件
                  *      babel-preset-env：编译规则，表示支持对哪些es6+语法进行babel，这个库包含了es6-最新的Storag 4语法
+                 *      babel-polyfill：给代码打补丁，增加一些es5实现的兼容性API，但直接用这个工具库会有坑，会污染全局或者多模块重复引入，所以我们一般选择用babel-plugin-transform-runtime + babel-runtime
                  * 4. options参数可以写在根目录的.babelrc里面，效果是一样的
                  */
                  test: /\.js$/,
                  exclude: '/node_modules/',
                  use: {
                     loader: 'babel-loader',
-                    options: {
-                        // 也可以写成presets:['env']
-                        presets: ['babel-preset-env']
-                    }
+                    // options参数也可以写在 .babelrc 文件中
+                    // options: {
+                    //     // 也可以写成presets:['env']
+                    //     presets: ['babel-preset-env'], // 按照esX规则进行代码编译
+                    //     plugins:['transform-runtime'], // 打补丁
+                    // }
                  },
             }
         ]
