@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     /**
@@ -36,8 +37,8 @@ module.exports = {
      * 一种是pipe（例如：gulp、ps aux | grep node 等），即管道，是连接起来的，上一个输出作为下一个输入，eg A -> B -> C
      * 另一种是compose，这种是函数式编程的组合概念，loader就是采用这种，eg：A(B(C()))，就想函数的调用顺序一样从里到外执行
      */
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
                 /**
                  * 为什么解析css文件需要两个loader？分别是做什么的？
@@ -112,7 +113,14 @@ module.exports = {
                     //     plugins:['transform-runtime'], // 打补丁
                     // }
                  },
-            }
+            },
+            {
+                /**
+                 * 编译 .vue 文件
+                 */
+                test: /\.vue$/,
+                use: ['vue-loader']
+            },
         ]
     },
 
@@ -124,6 +132,34 @@ module.exports = {
           template : path.resolve(__dirname, '../public/index.html'), // 模版
           filename: 'index.html' // 生成的文件名
         }),
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+        new VueLoaderPlugin(),
+    ],
+
+    /**
+     * 起一个devServer本地服务器，一方面方便用于前端发起网络请求。另一方面方便做一些热更新
+     */
+    //配置开发服务器
+    devServer: {
+        //设置端口号
+        port: 8080,
+        //开启热更新
+        hot: true,
+        //告诉服务器内容来源
+        contentBase: path.join(__dirname, 'dist')
+    },
+
+    /**
+     * 配置模块如何进行解析
+     */
+     resolve: {
+        // 创建别名
+        alias:{
+            'vue$':'vue/dist/vue.runtime.esm.js',
+            // 设置@引用的地址为根目录下的src
+            '@':path.resolve(__dirname,"../src")
+        },
+        //按顺序解析以下数组后缀名的文件
+        extensions:['*','.js','.json','.vue']
+    },
 }

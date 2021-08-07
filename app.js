@@ -3,6 +3,7 @@ import './feat/css/test.scss'
 import {
   add
 } from './feat/modular/esm'
+import VueTest from './src/test.vue'
 const {
   sub
 } = require('./feat/modular/common')
@@ -15,6 +16,7 @@ console.log("mult(20, 30) = ", mult(20, 30))
 console.log("lodash: ", _)
 // await promiseFn()
 console.log("---promiseFn---", promiseFn);
+console.log("---vue---", VueTest);
 
 Promise.resolve(Promise.reject())
   .then()
