@@ -85,6 +85,30 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                /**
+                 * 使用babel“编译” + “适配”es6+语法
+                 * 1. 为什么？为什么需要这么做？
+                 *      因为有一些浏览器没有那么快支持es6+的语法，所以我们需要将我们的代码“转换”+“打补丁”，来让它可以正常地跑在多个浏览器上
+                 * 2. 为什么是“编译”+”适配“？
+                 *      编译是代码编译时在语法层面做的代码改造转换，例如将es6的箭头函数转换为普通函数。
+                 *      ”适配“也就是”打补丁“，这种方式不是在编译时对代码进行的改造转换，而是**额外**得加上一些“补丁”，例如不会去转换Promise，而是提供一个es5实现的Promise方法，来让代码可以正常运行
+                 * 3. 在webpack中使用babel，需要以下几个依赖（且注意版本对应问题，最好同时安装，而不是分开安装）：
+                 *      babel-core：babel编译库的核心包
+                 *      babel-loader：可以针对指定的文件进行babel改造，webpack中的loader对应某一类文件
+                 *      babel-preset-env：编译规则，表示支持对哪些es6+语法进行babel，这个库包含了es6-最新的Storag 4语法
+                 * 4. options参数可以写在根目录的.babelrc里面，效果是一样的
+                 */
+                 test: /\.js$/,
+                 exclude: '/node_modules/',
+                 use: {
+                    loader: 'babel-loader',
+                    options: {
+                        // 也可以写成presets:['env']
+                        presets: ['babel-preset-env']
+                    }
+                 },
             }
         ]
     },
