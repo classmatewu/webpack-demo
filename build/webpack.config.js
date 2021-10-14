@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const webpack = require('webpack')
 
 module.exports = {
     /**
@@ -17,7 +18,8 @@ module.exports = {
     /**
      * 入口文件
      */
-    entry : './app.js',
+    // entry : './app.js',
+    entry : './hmr-test/index.js',
 
     /**
      * 打包出口
@@ -134,6 +136,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
+        new webpack.HotModuleReplacementPlugin(), // webpack的HMR插件
     ],
 
     /**
@@ -145,6 +148,8 @@ module.exports = {
         port: 8080,
         //开启热更新
         hot: true,
+        // 当hot失效时，也不要刷新浏览器
+        hotOnly: true,
         //告诉服务器内容来源
         contentBase: path.join(__dirname, 'dist')
     },
