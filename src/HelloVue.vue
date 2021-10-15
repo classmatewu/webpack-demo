@@ -5,23 +5,18 @@
 </template>
 
 <script>
-
 export default {
-  name: 'Test',
+  name: 'HelloVue',
   data() {
     return {
       test: "yyds"
     }
   },
-  components: {},
-  props: {},
-  emits: {},
-  setup(props) {},
 }
 </script>
 
-<style lang='scss' module>
+<style lang='scss' scoped>
   .test {
-    background-color: antiquewhite;
+    background-color: rgb(123, 123, 212);
   }
 </style>

@@ -5,7 +5,7 @@
   "main": "amd.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --config ./build/webpack.config.js"
+    "dev": "webpack-dev-server --config ./build/webpack.config.js --open"
   },
   "dependencies": {
     "lodash": "^4.17.21",

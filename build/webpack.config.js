@@ -78,7 +78,7 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 1024 * 1024 * 10, // 10M
+                            limit: 1024 , // 10M
                             fallback: {
                                 loader: 'file-loader',
                                 options: {
@@ -119,6 +119,7 @@ module.exports = {
             {
                 /**
                  * 编译 .vue 文件
+                 * vue-loader 依赖 vue-template-compiler 处理tempalte，vue-style-loader处理css
                  */
                 test: /\.vue$/,
                 use: ['vue-loader']
@@ -141,6 +142,8 @@ module.exports = {
 
     /**
      * 起一个devServer本地服务器，一方面方便用于前端发起网络请求。另一方面方便做一些热更新
+     * 启动devServer的话，使用"dev": "webpack-dev-server --config ./build/webpack.config.js"命令后
+     * 看不到打包生成的文件，因为在内存中，直接访问127.0.0.1:端口号后，默认会去找内存里的dist index.html 文件
      */
     //配置开发服务器
     devServer: {
@@ -157,14 +160,14 @@ module.exports = {
     /**
      * 配置模块如何进行解析
      */
-     resolve: {
-        // 创建别名
-        alias:{
-            'vue$':'vue/dist/vue.runtime.esm.js',
-            // 设置@引用的地址为根目录下的src
-            '@':path.resolve(__dirname,"../src")
-        },
-        //按顺序解析以下数组后缀名的文件
-        extensions:['*','.js','.json','.vue']
-    },
+    //  resolve: {
+    //     // 创建别名
+    //     alias:{
+    //         'vue$':'vue/dist/vue.runtime.esm.js',
+    //         // 设置@引用的地址为根目录下的src
+    //         '@':path.resolve(__dirname, "./src")
+    //     },
+    //     //按顺序解析以下数组后缀名的文件
+    //     extensions:['*','.js','.json','.vue']
+    // },
 }
