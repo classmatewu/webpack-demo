@@ -109,11 +109,11 @@ module.exports = {
                  use: {
                     loader: 'babel-loader',
                     // options参数也可以写在 .babelrc 文件中
-                    // options: {
-                    //     // 也可以写成presets:['env']
-                    //     presets: ['babel-preset-env'], // 按照esX规则进行代码编译
-                    //     plugins:['transform-runtime'], // 打补丁
-                    // }
+                    options: {
+                        // 也可以写成presets:['env']
+                        presets: ['babel-preset-env'], // 按照esX规则进行代码编译
+                        plugins:['transform-runtime'], // 打补丁
+                    }
                  },
             },
             {
@@ -152,7 +152,7 @@ module.exports = {
         //开启热更新
         hot: true,
         // 当hot失效时，也不要刷新浏览器
-        hotOnly: true,
+        // hotOnly: true,
         //告诉服务器内容来源
         contentBase: path.join(__dirname, 'dist')
     },

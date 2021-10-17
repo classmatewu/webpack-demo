@@ -2,6 +2,7 @@
  * @description 有一个按钮，每一次点击它，页面就会多一个tag，并且偶数个tag会有特殊的背景色
  */
 import './index.css'
+import App from './VueApp.vue'
 
 const btn = document.createElement('button')
 btn.innerHTML = 'new tag'
@@ -12,8 +13,12 @@ btn.addEventListener('click', () => {
   document.body.appendChild(div)
 })
 
-if (module.hot) {
-  module.hot.accept('./index.css', () => {
-    console.log(111);
-  })
-}
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
+
+// if (module.hot) {
+//   module.hot.accept('./index.css', () => {
+//     console.log(111);
+//   })
+// }

@@ -14,7 +14,7 @@
   resolved "https://registry.nlark.com/@babel/compat-data/download/@babel/compat-data-7.15.0.tgz#2dbaf8b85334796cafbb0f5793a90a2fc010b176"
   integrity sha1-Lbr4uFM0eWyvuw9Xk6kKL8AQsXY=
 
-"@babel/core@^7.15.0":
+"@babel/core@^7.15.8":
   version "7.15.8"
   resolved "https://registry.npmmirror.com/@babel/core/download/@babel/core-7.15.8.tgz?cache=0&sync_timestamp=1633553719287&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fcore%2Fdownload%2F%40babel%2Fcore-7.15.8.tgz#195b9f2bffe995d2c6c159e72fe525b4114e8c10"
   integrity sha1-GVufK//pldLGwVnnL+UltBFOjBA=
@@ -739,7 +739,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.14.5"
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/preset-env@^7.15.0":
+"@babel/preset-env@^7.15.8":
   version "7.15.8"
   resolved "https://registry.npmmirror.com/@babel/preset-env/download/@babel/preset-env-7.15.8.tgz#f527ce5bcb121cd199f6b502bf23e420b3ff8dba"
   integrity sha1-9SfOW8sSHNGZ9rUCvyPkILP/jbo=
@@ -2431,7 +2431,7 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-css-loader@^6.2.0:
+css-loader@^6.4.0:
   version "6.4.0"
   resolved "https://registry.npmmirror.com/css-loader/download/css-loader-6.4.0.tgz?cache=0&sync_timestamp=1633783396793&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcss-loader%2Fdownload%2Fcss-loader-6.4.0.tgz#01c57ea776024e18ca193428dcad3ff6b42a0130"
   integrity sha1-AcV+p3YCThjKGTQo3K0/9rQqATA=
@@ -6519,7 +6519,7 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vue-loader@^16.5.0:
+vue-loader@^16.8.1:
   version "16.8.1"
   resolved "https://registry.npmmirror.com/vue-loader/download/vue-loader-16.8.1.tgz#354f12bc0897954158b71590f800295713a7792d"
   integrity sha1-NU8SvAiXlUFYtxWQ+AApVxOneS0=
